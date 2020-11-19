@@ -8,13 +8,15 @@ window.video2gif.state = new Proxy(
   {
     set: (obj, prop, value) => {
       switch (prop) {
+        case "canDownload":
+          rootApp.dataset.canDownload = value;
+          break;
         case "ffmpegIsLoaded":
-          if (value === true) {
-            rootApp.dataset.ffmpegIsLoaded = true;
-          }
+          rootApp.dataset.ffmpegIsLoaded = value;
           break;
         case "gifSrc":
           gifEl.src = value;
+          window.video2gif.state.canDownload = true;
           break;
         case "messageText":
           messageEl.innerText = value;
@@ -35,4 +37,5 @@ Object.assign(state, {
   ffmpegIsLoaded: false,
   convertProcessPending: false,
   messageText: "Drop file here",
+  canDownload: false,
 });
