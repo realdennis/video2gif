@@ -10,7 +10,8 @@
     font-size: 40px;
   }
   .output-container {
-
+    user-select: none;
+    overflow: hidden;
     background-color: black;
     margin: 0 auto;
     width: 80%;
@@ -39,9 +40,26 @@
       height: 100%;
       object-fit: contain;
     }
+    .download-container {
+      cursor: pointer;
+      position: absolute;
+      bottom: -20%;
+      width: 100%;
+      background: rgba(255, 192, 203, .8);
+      font-size: 20px;
+      height:20%;
+      z-index:2;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 1s ease;
+    }
   }
-  // .message-container {
-  //   padding: 20px;
-  //   color: greenyellow;
-  // }
+}
+
+
+#app[data-can-download=true]{
+  .download-container{
+    transform: translateY(-100%);
+  }
 }

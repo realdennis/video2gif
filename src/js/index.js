@@ -1,5 +1,5 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
-import { rootApp } from "./elements";
+import { downloadEl, rootApp } from "./elements";
 import { state } from "./stateManager";
 const ffmpeg = createFFmpeg({ log: false });
 
@@ -12,6 +12,7 @@ const converter = async (file) => {
 
   state.messageText = "Start converting...";
   const { name } = file;
+  state.filename = name;
   ffmpeg.FS("writeFile", name, await fetchFile(file));
   await ffmpeg.run("-i", name, "-t", "3", "output.gif");
   state.messageText = "Complete converting!";
@@ -27,7 +28,16 @@ window.addEventListener("drop", (e) => e.preventDefault(), true);
 window.addEventListener("dragover", (e) => e.preventDefault(), true);
 rootApp.addEventListener("drop", (e) => {
   e.preventDefault();
+  state.canDownload = false;
   const { items, files } = e.dataTransfer;
   const file = (items[0] && items[0].getAsFile()) || files[0];
   file && file.type && file.type.includes("video") && converter(file);
+});
+
+downloadEl.addEventListener("click", () => {
+  if (state.gifSrc === "" || !state.canDownload) return;
+  const shadowAnchor = document.createElement("a");
+  shadowAnchor.href = state.gifSrc;
+  shadowAnchor.download = state.filename.split(".")[0] + ".gif";
+  shadowAnchor.click();
 });
