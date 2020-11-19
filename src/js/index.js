@@ -1,36 +1,24 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+import { rootApp } from "./elements";
+import { state } from "./stateManager";
 const ffmpeg = createFFmpeg({ log: false });
-const globalState = {
-  ffmpegIsLoaded: false,
-  convertProcessPending: false,
-  messageText: '',
-  gifSrc: '',
-};
 
-// Define element
-const rootApp = document.getElementById("app");
-const messageEl = rootApp.getElementsByClassName("message")[0],
-  gifEl = rootApp.getElementsByClassName("output-gif")[0];
-
-const trim = async (file) => {
-  const { name } = file;
-  messageEl.innerHTML = "Loading ffmpeg-core.js";
-  if (!globalState.ffmpegIsLoaded) {
+const converter = async (file) => {
+  state.messageText = "Loading ffmpeg-core.js from CDN";
+  if (!state.ffmpegIsLoaded) {
     await ffmpeg.load();
-    globalState.ffmpegIsLoaded = true;
+    state.ffmpegIsLoaded = true;
   }
-  messageEl.innerHTML = "Start trimming";
+
+  state.messageText = "Start converting...";
+  const { name } = file;
   ffmpeg.FS("writeFile", name, await fetchFile(file));
-  await ffmpeg.run(
-    "-i",
-    name,
-    "-t",
-    "3",
-    "output.gif"
-  );
-  messageEl.innerHTML = "Complete trimming";
+  await ffmpeg.run("-i", name, "-t", "3", "output.gif");
+  state.messageText = "Complete converting!";
+
+  // Set state
   const data = ffmpeg.FS("readFile", "output.gif");
-  gifEl.src = URL.createObjectURL(
+  state.gifSrc = URL.createObjectURL(
     new Blob([data.buffer], { type: "image/mp4" })
   );
 };
@@ -41,5 +29,5 @@ rootApp.addEventListener("drop", (e) => {
   e.preventDefault();
   const { items, files } = e.dataTransfer;
   const file = (items[0] && items[0].getAsFile()) || files[0];
-  file && file.type && file.type.includes('video') && trim(file);
+  file && file.type && file.type.includes("video") && converter(file);
 });
