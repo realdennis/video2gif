@@ -1,6 +1,6 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import { downloadEl, rootApp } from "./elements";
-import { state, resetState } from "./stateManager";
+import { state } from "./stateManager";
 const ffmpeg = createFFmpeg({ log: false });
 
 const converter = async (file) => {
