@@ -19,7 +19,7 @@ const converter = async (file) => {
   // Set state
   const data = ffmpeg.FS("readFile", "output.gif");
   state.gifSrc = URL.createObjectURL(
-    new Blob([data.buffer], { type: "image/mp4" })
+    new Blob([data.buffer], { type: "image/gif" })
   );
 };
 
