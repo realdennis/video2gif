@@ -19,8 +19,8 @@ const converter = async (file) => {
   state.messageText = "Start converting...⏳⏳⏳";
   const { name } = file;
   state.filename = name;
-  ffmpeg.FS("writeFile", name, await fetchFile(file));
-  await ffmpeg.run("-i", name, "-r", "5", "-f", "gif", "output.gif");
+  ffmpeg.FS("writeFile", "VIDEO", await fetchFile(file));
+  await ffmpeg.run("-i", "VIDEO", "-r", "5", "-f", "gif", "output.gif");
   state.messageText = "";
 
   // Set state
