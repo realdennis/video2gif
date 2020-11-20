@@ -4,27 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video2Gif</title>
-    <link rel="shortcut icon" href="./assets/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <meta property="og:title" content="Video2Gif"/>
-    <meta property="og:description" content="Drag & drop video file, will convert to GIF and download."/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:image" content="./assets/preview.jpg"/>
-    <meta property="og:url" content="https://video2gif.now.sh/"/>
+    <link rel="shortcut icon" href="./assets/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
+    <meta property="og:title" content="Video2Gif" />
+    <meta
+      property="og:description"
+      content="Convert video to gif on browser and download it!"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./assets/preview.jpg" />
+    <meta property="og:url" content="https://video2gif.now.sh/" />
   </head>
   <body>
     <div id="app">
       <h1 class="headline">Video to Gif</h1>
-      
       <div class="output-container nes-container is-rounded">
-        <img class="output-gif"></img>
-        <!-- <div class="message-container nes-container is-rounded "> -->
-          <p class="output-message"></p>
-        <!-- </div> -->
-        <button class="output-download-btn nes-btn is-primary">Download GIF File</button>
+        <img class="output-gif" />
+        <p class="output-message"></p>
+        <button class="output-download-btn nes-btn is-primary">
+          Download GIF File
+        </button>
       </div>
-      
-    
+      <div class="sticky-social-container">
+        <div class="nes-balloon from-right sticky-social-ballon">
+          <p>Do you like this?</p>
+          <div class="sticky-social-group">
+            <a
+              href="https://twitter.com/share?text=Video2Gif, convert video to gif on browser and download it!&url=https://video2gif.now.sh/"
+              target="_blank"
+              ><i class="nes-icon twitter"></i
+            ></a>
+            <a href="https://www.facebook.com/sharer.php?u=https://video2gif.now.sh/" target="_blank"><i class="nes-icon facebook"></i></a>
+            <iframe
+              class="github-btn"
+              src="https://ghbtns.com/github-btn.html?user=realdennis&repo=video2gif&type=star&count=true&size=large"
+              height="30"
+              width="150"
+              frameborder="0" 
+            ></iframe>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./js/index.js"></script>
     <script src="./css/index.js"></script>
