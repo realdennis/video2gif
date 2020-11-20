@@ -35,7 +35,7 @@ export const { state } = window.video2gif;
 Object.assign(state, {
   ffmpegIsLoaded: false,
   convertProcessPending: false,
-  messageText: "Drop file here 📁📁📁",
+  messageText: "Drop video file here 📁📁📁",
   canDownload: false,
   gifSrc: "",
   isDraging: false,
