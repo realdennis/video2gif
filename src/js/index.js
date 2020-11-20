@@ -1,12 +1,12 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
-import { downloadEl, rootApp } from "./elements";
+import { downloadEl, gifEl, rootApp } from "./elements";
 import { state } from "./stateManager";
 const ffmpeg = createFFmpeg({ log: false });
 
 const converter = async (file) => {
   state.canDownload = false;
   if (!state.ffmpegIsLoaded) {
-    state.messageText = "Loading ffmpeg-core.js from CDN 🌐🌐🌐";
+    state.messageText = "Loading ffmpeg-core.js 🌐🌐🌐";
     await ffmpeg.load();
     state.ffmpegIsLoaded = true;
   }
@@ -15,7 +15,7 @@ const converter = async (file) => {
   const { name } = file;
   state.filename = name;
   ffmpeg.FS("writeFile", name, await fetchFile(file));
-  await ffmpeg.run("-i", name, "-t", "3", "output.gif");
+  await ffmpeg.run("-i", name, "-r", "5", "-f", "gif", "output.gif");
   state.messageText = "";
 
   // Set state
@@ -25,6 +25,7 @@ const converter = async (file) => {
   );
 };
 
+gifEl.addEventListener("mousedown", (e) => e.preventDefault());
 window.addEventListener("drop", (e) => e.preventDefault(), true);
 window.addEventListener("dragover", (e) => e.preventDefault(), true);
 rootApp.addEventListener("drop", (e) => {
