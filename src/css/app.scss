@@ -53,9 +53,14 @@
       transform: unset;
     }
   }
-  @media(max-width: 768px) {
+  @media(max-width: 1124px) {
+    .headline {
+      font-size: 30px;
+    }
     .sticky-social-container {
-      transform: scale(0.6) translate(30%, 30%);
+      bottom: unset;
+      transform: scale(0.7) translate(15%, -15%);
+      top: 10px;
     }
   }
   .sticky-social-group {
