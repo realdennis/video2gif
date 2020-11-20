@@ -7,8 +7,13 @@ const converter = async (file) => {
   state.canDownload = false;
   if (!state.ffmpegIsLoaded) {
     state.messageText = "Loading ffmpeg-core.js 🌐🌐🌐";
-    await ffmpeg.load();
-    state.ffmpegIsLoaded = true;
+    try {
+      await ffmpeg.load();
+      state.ffmpegIsLoaded = true;
+    } catch (e) {
+      state.messageText = `Error: ${e.message}`;
+      return;
+    }
   }
 
   state.messageText = "Start converting...⏳⏳⏳";
