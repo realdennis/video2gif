@@ -6,7 +6,6 @@
   "author": "realdennis <realdennis777@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "initial": "yarn --ignore-engines",
     "dev": "parcel src/index.html",
     "build": "rimraf dist/ && parcel build src/index.html"
   },
