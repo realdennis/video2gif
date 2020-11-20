@@ -2,8 +2,11 @@ html,
 body {
   height: 100%;
 }
-
-body {
-    
-  background: black;
+html,
+body,
+pre,
+code,
+kbd,
+samp {
+  font-family: "Press Start 2P", monospace;
 }

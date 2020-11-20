@@ -3380,6 +3380,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+nes.css@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/nes.css/-/nes.css-2.3.0.tgz#112c834dd8a18cda570ab76d66b26b078a94c919"
+  integrity sha512-lCFZs9vj3f5RVdbvTL/kSxiYsOARwSeAdJaMNo+bCgmWOO9x8ay7QpT4yQVKHy3r5Dttzd0uqVdpt3fvvx6EpQ==
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

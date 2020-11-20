@@ -29,17 +29,23 @@ window.addEventListener("drop", (e) => e.preventDefault(), true);
 window.addEventListener("dragover", (e) => e.preventDefault(), true);
 rootApp.addEventListener("drop", (e) => {
   state.isDraging = false;
+  state.messageText = "Dropped";
   const { items, files } = e.dataTransfer;
   const file = (items[0] && items[0].getAsFile()) || files[0];
-  file && file.type && file.type.includes("video") && converter(file);
+  if (file && file.type && file.type.includes("video")) {
+    converter(file);
+  } else {
+    state.messageText =
+      "Read file failed, please check the file type is video.";
+  }
 });
 rootApp.addEventListener(
   "dragover",
   () => {
-    state.gifSrc = '';
+    state.gifSrc = "";
     state.canDownload = false;
     state.isDraging = true;
-    state.messageText = "Dropping...🖱️🖱️🖱️"
+    state.messageText = "Dropping...🖱️🖱️🖱️";
   },
   true
 );
