@@ -18,7 +18,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video2Gif</title>
-    <link rel="shortcut icon" href="./assets/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Press+Start+2P"
       rel="stylesheet"
@@ -30,7 +30,7 @@
       content="Convert video to gif on browser!"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="./assets/preview.jpg" />
+    <meta property="og:image" content="/preview.jpg" />
     <meta property="og:url" content="https://video2gif.now.sh/" />
   </head>
   <body>
@@ -66,10 +66,12 @@
           </div>
         </div>
       </div>
-      <label for="file" class="nes-btn"> <h1 class="headline">🚀 Video to Gif</h1></label>
-      <input type="file" id="file" name="file" style="display: none;" />
+      <label for="file" class="nes-btn">
+        <h1 class="headline">🚀 Video to Gif</h1></label
+      >
+      <input type="file" id="file" name="file" style="display: none" />
     </div>
-    <script src="./js/index.js"></script>
-    <script src="./css/index.js"></script>
+    <script type="module" src="/_dist_/js/index.js"></script>
+    <script type="module" src="/_dist_/css/index.js"></script>
   </body>
 </html>
