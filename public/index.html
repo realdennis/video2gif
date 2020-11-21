@@ -19,12 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video2Gif</title>
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
-      rel="stylesheet"
-    />
-    <meta property="og:title" content="Video2Gif" />
     <meta name="Description" content="Convert video to gif on browser!" />
+    <meta property="og:title" content="Video2Gif" />
     <meta
       property="og:description"
       content="Convert video to gif on browser!"
@@ -32,11 +28,34 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/preview.jpg" />
     <meta property="og:url" content="https://video2gif.now.sh/" />
+    <style type="text/css">
+      @font-face {
+        font-family: "Press Start 2P";
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/pressstart2p/v9/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2)
+          format("woff2");
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      html,
+      body,
+      pre,
+      code,
+      kbd,
+      samp {
+        font-family: "Press Start 2P", monospace;
+      }
+    </style>
+    <link href="/_dist_/css/app.css" rel="stylesheet" />
   </head>
   <body>
     <div id="app">
       <div class="output-container nes-container is-rounded">
-        <img class="output-gif" />
+        <img class="output-gif" alt="output gif" width="0" height="0" />
         <p class="output-message"></p>
         <button class="output-download-btn nes-btn is-primary">
           Download GIF File
