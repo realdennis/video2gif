@@ -30,13 +30,13 @@ window.video2gif.state = new Proxy(
 );
 
 export const { state } = window.video2gif;
-
-// State initial
-Object.assign(state, {
-  ffmpegIsLoaded: false,
+const initialState = {
   convertProcessPending: false,
   messageText: "Drop file here / Click button 📁📁📁",
   canDownload: false,
   gifSrc: "",
   isDraging: false,
-});
+};
+// State initial
+export const initializeState = () => Object.assign(state, initialState);
+initializeState();
