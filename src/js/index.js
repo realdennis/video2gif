@@ -1,10 +1,10 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import { downloadEl, fileInputEl, gifEl, rootApp } from "./elements";
-import { state } from "./stateManager";
+import { state, initializeState } from "./stateManager";
 const ffmpeg = createFFmpeg({ log: false });
 
 const converter = async (file) => {
-  state.canDownload = false;
+  initializeState();
   if (!state.ffmpegIsLoaded) {
     state.messageText = "Loading ffmpeg-core.js 🌐🌐🌐";
     try {
@@ -65,7 +65,7 @@ rootApp.addEventListener(
   },
   true
 );
-rootApp.addEventListener("dragleave", () => (state.isDraging = false), true);
+rootApp.addEventListener("dragleave", initializeState, true);
 
 downloadEl.addEventListener("click", () => {
   if (state.gifSrc === "") return;

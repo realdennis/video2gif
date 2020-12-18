@@ -8,8 +8,9 @@ window.video2gif.state = new Proxy(
   {
     set: (obj, prop, value) => {
       switch (prop) {
-        // case "canDownload":
         case "ffmpegIsLoaded":
+          // state ffmpegIsLoaded should not back to false
+          if(obj[prop]) return true;
         case "isDraging":
           rootApp.dataset[prop] = value;
           break;
@@ -30,13 +31,14 @@ window.video2gif.state = new Proxy(
 );
 
 export const { state } = window.video2gif;
-
-// State initial
-Object.assign(state, {
+const initialState = {
   ffmpegIsLoaded: false,
   convertProcessPending: false,
   messageText: "Drop file here / Click button 📁📁📁",
   canDownload: false,
   gifSrc: "",
   isDraging: false,
-});
+};
+// State initial
+export const initializeState = () => Object.assign(state, initialState);
+initializeState();
