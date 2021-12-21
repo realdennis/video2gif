@@ -1,7 +1,10 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import { downloadEl, fileInputEl, gifEl, rootApp } from "./elements";
 import { state, initializeState } from "./stateManager";
-const ffmpeg = createFFmpeg({ log: false });
+const ffmpeg = createFFmpeg({
+  corePath: "ffmpeg/ffmpeg-core.js",
+  log: false,
+});
 
 const converter = async (file) => {
   initializeState();
